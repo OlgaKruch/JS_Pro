@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Stuffing{
+            constructor(stuffing, price, calories) {
+                this.stuffing = stuffing;
+                this.price = price;
+                this.calories = calories;
+            }
+        }
+
+        class Topping{
+            constructor(stuffing, price, calories) {
+                this.stuffing = stuffing;
+                this.price = price;
+                this.calories = calories;
+            }
+        }
+        
+        const burgers = {
+            'Маленький': {price: 50, calories: 20},
+            'Большой': {price: 100, calories: 40},
+        };
+
+        class Hamburger {
+            constructor(size, stuffing) {
+                this.burger = burgers[size];
+                this.size = size;
+                this.stuffing = stuffing;
+                this.toppings = [];
+            }
+            addTopping(topping){
+                this.toppings.push(topping);
+            }
+            removeTopping(topping){
+                this.toppings = this.toppings.filter(x => x != topping);
+            }
+            calculatePrice(){
+                let p = 0;
+                for(let i = 0; i < this.toppings.length; i++){
+                    p  += this.toppings[i].price;
+                }
+        
+                return this.burger.price + this.stuffing.price + p;
+            }
+            calculateCalories(){
+                let p = 0;
+                for(let i = 0; i < this.toppings.length; i++){
+                    p  += this.toppings[i].calories;
+                }
+        
+                return this.burger.calories + this.stuffing.calories + p;
+            }
+        }
+
+        
+        const portion1 = new Stuffing("С сыром", 10, 20);
+        const portion2 = new Stuffing("С салатом", 20, 5);
+        const portion3 = new Stuffing("С картофелем", 15, 10);
+        const servis1 = new Topping("Приправа", 15, 0);
+        const servis2 = new Topping("Майонез", 20, 5);
+
+        const bur1 = new Hamburger('Маленький', portion2);
+        bur1.addTopping(servis2);
+        console.log(`${bur1.size} бургер будет стоить ${bur1.calculatePrice()} рублей и иметь ${bur1.calculateCalories()} калорий.`);
+
+    </script>
+</body>
+</html>
