@@ -1,0 +1,31 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.wrap {
+    margin: 0 auto;
+    width: 1140px;
+}
+
+.header {
+    background-color: #242424;
+    color: white;
+    height: 50px;
+}   
+.header-wrap {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 15px;
+}
+.products {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+
+}
+
+img {
+    width: 200px;
+    height: 150px;
+}
